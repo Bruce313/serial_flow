@@ -1,1 +1,58 @@
-<h1> TEST </h1>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
+        <style type="text/css">
+            .debug {
+                border-style: solid;
+                border-width: 3px;
+                border-color: #ff0000;
+            }
+            html,body {
+                width: 100%;
+                height: 100%;
+            }
+            .tab-content {
+                align-items: stretch;
+                display: flex;
+                background-color: #000000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="main">
+            <ul class="nav nav-tabs">
+                <li class="nav-item" 
+                    v-bind:class="{active:activeIndex==0}"
+                    v-on:click="activeIndex=0">
+                    <a class="nav-link" href="#">标签a</a>
+                </li>
+                <li class="nav-item" 
+                    v-bind:class="{active:activeIndex==1}"
+                    v-on:click="activeIndex=1">
+                    <a class="nav-link " href="#">标签a</a>
+                </li>
+                <li class="nav-item"
+                    v-bind:class="{active:activeIndex==2}"
+                    v-on:click="activeIndex=2">
+                    <a class="nav-link disabled" href="#">标签a</a>
+                </li>
+            </ul>
+            <div id="menu-tab" v-show="activeIndex==0" class="tab-content">1</div>
+            <div id="port-set" v-show="activeIndex==1" class="tab-content">2</div>
+            <div id="handler-tab" v-show="activeIndex==2" class="tab-content">3</div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        new Vue({
+            el: "#main",
+            data: {
+                message: "abc",
+                activeIndex: 0,
+                isActive: true,
+            }
+        });
+    </script>
+</html>

@@ -3,7 +3,11 @@
 import tornado.ioloop
 import tornado.web
 
+
 class TestHandler(tornado.web.RequestHandler):
+    def data_received(self, chunk):
+        pass
+
     def get(self):
         print("get request")
         self.write({"str": "hello tornado"})
